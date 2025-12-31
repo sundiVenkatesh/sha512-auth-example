@@ -1,0 +1,13 @@
+{
+  "name": "sha512-auth-example",
+  "version": "1.0.0",
+  "description": "Minimal Node.js register/login APIs using SHA-512 (pbkdf2)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.22.1",
+    "sqlite3": "^5.1.7"
+  }
+}
