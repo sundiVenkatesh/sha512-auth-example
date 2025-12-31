@@ -2,9 +2,9 @@
   "name": "sha512-auth-example",
   "version": "1.0.0",
   "description": "Minimal Node.js register/login APIs using SHA-512 (pbkdf2)",
-  "main": "index.js",
+  "main": "backend/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node backend/index.js"
   },
   "dependencies": {
     "express": "^4.22.1",
