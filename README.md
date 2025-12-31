@@ -51,6 +51,48 @@ curl -X POST http://localhost:3001/api/auth/login \
 - Git configured with user: Venkatesh, email: venkatesh.sundi@outlook.com
 - Repository: https://github.com/sundiVenkatesh/sha512-auth-example
 
+## How HTML Communicates with Node.js
+
+The HTML frontend communicates with the Node.js backend using the Fetch API in JavaScript. When a user submits the registration or login form:
+
+1. The form's submit event is prevented from default behavior.
+2. JavaScript collects the username and password from the form inputs.
+3. A `fetch()` request is made to the appropriate API endpoint (e.g., `/api/auth/register`) with method POST, headers for JSON content, and the data as JSON in the body.
+4. The server processes the request, hashes passwords, interacts with the SQLite database, and returns a JSON response.
+5. The JavaScript handles the response: on success, displays a message (e.g., welcome for login); on error, shows the error message.
+6. No page reload occurs; it's a single-page application style interaction.
+
+This allows for dynamic updates without full page refreshes.
+
+## Code Block Explanations
+
+### Installation & Run
+```
+npm install
+npm start
+```
+- `npm install`: Installs dependencies listed in package.json, including express and sqlite3.
+- `npm start`: Runs the script defined in package.json, which is `node index.js`, starting the server on port 3001.
+
+### API Examples
+Register:
+```
+curl -X POST http://localhost:3001/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username":"alice","password":"s3cret"}'
+```
+- This curl command sends a POST request to the register endpoint with JSON data. The server creates a new user if the username doesn't exist, hashes the password, and stores it in SQLite.
+
+Login:
+```
+curl -X POST http://localhost:3001/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"alice","password":"s3cret"}'
+```
+- Sends a POST to login, verifies the password against the stored hash, and returns success with username if valid.
+
+These examples demonstrate API usage via command line; the HTML forms do the same via fetch.
+
 ## Conversation Log
 
 (This section documents the development chat for reference.)
